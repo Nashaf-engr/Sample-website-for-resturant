@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Pink Slice serves handcrafted pizzas, burgers, submarines, and drinks with fast delivery and a modern ordering experience."
+  >
+  <title>Pink Slice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__slice"></div>
+    <p>Fresh from the oven...</p>
+  </div>
+
+  <div class="page-shell">
+    <!-- Sticky navigation and full-bleed hero -->
+    <header class="header" id="home">
+      <nav class="navbar">
+        <a href="#home" class="logo" aria-label="Pink Slice Home">
+          <span class="logo__icon">PS</span>
+          <span class="logo__text">Pink Slice</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links" id="navMenu">
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <button class="cart-link" id="openCartBtn" type="button">
+            Cart
+            <span class="cart-badge" id="navCartCount">0</span>
+          </button>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <div class="hero__overlay"></div>
+        <div class="hero__content section reveal">
+          <p class="eyebrow">Fast delivery. Fired with flavor.</p>
+          <h1>Delicious Pizza, Delivered Fast</h1>
+          <p class="hero__copy">
+            Hand-stretched dough, melty cheese, and bold toppings served with burgers,
+            submarines, and chilled drinks for every craving.
+          </p>
+          <div class="hero__actions">
+            <a href="#menu" class="btn btn--primary">Order Now</a>
+            <a href="#about" class="btn btn--ghost">Discover Our Story</a>
+          </div>
+        </div>
+
+        <div class="hero__featured section reveal">
+          <div class="featured-panel">
+            <p class="featured-panel__label">Featured tonight</p>
+            <div class="featured-grid" id="featuredItems"></div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="highlights section reveal" aria-label="Restaurant highlights">
+        <article>
+          <h3>Stone-baked classics</h3>
+          <p>Fresh dough and premium toppings finished with a signature Pink Slice glaze.</p>
+        </article>
+        <article>
+          <h3>30-minute dispatch</h3>
+          <p>Hot meals leave the kitchen fast with streamlined pickup and delivery prep.</p>
+        </article>
+        <article>
+          <h3>Late-night comfort</h3>
+          <p>From stacked burgers to loaded submarines, every order feels like a feast.</p>
+        </article>
+      </section>
+
+      <!-- Data-driven menu cards are injected here by script.js -->
+      <section class="menu section" id="menu">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Signature menu</p>
+          <h2>Made to match every craving</h2>
+          <p>
+            Browse pizzas, burgers, submarines, and drinks. Adjust quantities,
+            add your favorites, and keep your cart updated in real time.
+          </p>
+        </div>
+
+        <div class="menu-toolbar reveal">
+          <div class="filter-group" id="menuFilters" role="tablist" aria-label="Filter menu categories">
+            <button class="filter-btn is-active" data-category="all" type="button">All</button>
+            <button class="filter-btn" data-category="pizza" type="button">Pizza</button>
+            <button class="filter-btn" data-category="burger" type="button">Burger</button>
+            <button class="filter-btn" data-category="submarine" type="button">Submarine</button>
+            <button class="filter-btn" data-category="drink" type="button">Drink</button>
+          </div>
+          <p class="menu-toolbar__note">Choose a size for pizzas, then add the perfect quantity.</p>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+        </div>
+      </section>
+
+      <section class="about section" id="about">
+        <div class="about__image reveal">
+          <img
+            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80"
+            alt="Freshly baked pizza on a wooden board"
+          >
+        </div>
+        <div class="about__content reveal">
+          <p class="eyebrow">About Pink Slice</p>
+          <h2>Built for fast nights, bold flavor, and repeat cravings</h2>
+          <p>
+            Pink Slice blends a modern city-night aesthetic with oven-fired comfort food.
+            We keep our menu tight, our ingredients fresh, and our service quick, so every
+            order feels effortless from the first click to the final bite.
+          </p>
+          <div class="about__list">
+            <div>
+              <span>01</span>
+              <p>Fresh daily dough, premium sauces, and perfectly balanced toppings.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <p>Flexible menu options with pizzas, burgers, submarines, and cold drinks.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <p>Smart cart and checkout flow designed for easy repeat ordering.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checkout mirrors the live cart summary before order submission -->
+      <section class="checkout section" id="checkout">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Checkout</p>
+          <h2>Review your order and get it on the way</h2>
+          <p>Complete your delivery details, choose a payment method, and confirm your order.</p>
+        </div>
+
+        <div class="checkout__grid">
+          <div class="checkout__summary reveal">
+            <h3>Order summary</h3>
+            <div id="checkoutSummary" class="checkout-summary__items">
+              <p class="empty-state">Your cart is empty. Add menu items to see your summary here.</p>
+            </div>
+            <div class="checkout-summary__total">
+              <span>Total</span>
+              <strong id="checkoutTotal">$0.00</strong>
+            </div>
+          </div>
+
+          <form class="checkout__form reveal" id="checkoutForm" novalidate>
+            <div class="form-grid">
+              <label>
+                Name
+                <input type="text" id="customerName" name="name" placeholder="Your full name" required>
+              </label>
+              <label>
+                Phone
+                <input type="tel" id="customerPhone" name="phone" placeholder="07X XXX XXXX" required>
+              </label>
+            </div>
+
+            <label>
+              Address
+              <textarea id="customerAddress" name="address" rows="3" placeholder="Street, city, landmark" required></textarea>
+            </label>
+
+            <label>
+              Delivery instructions
+              <textarea
+                id="deliveryInstructions"
+                name="instructions"
+                rows="3"
+                placeholder="Gate code, apartment number, or extra notes"
+              ></textarea>
+            </label>
+
+            <fieldset class="payment-options">
+              <legend>Payment option</legend>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="Cash on Delivery" checked>
+                <span>Cash on Delivery</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="Card">
+                <span>Card (UI only)</span>
+              </label>
+            </fieldset>
+
+            <button type="submit" class="btn btn--primary btn--full">Place Order</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact">
+        <div class="contact__details reveal">
+          <p class="eyebrow">Contact us</p>
+          <h2>Say hello or plan your next order</h2>
+          <div class="contact-cards">
+            <article>
+              <h3>Phone</h3>
+              <p>+94 72 024 3581</p>
+            </article>
+            <article>
+              <h3>Email</h3>
+              <p>nashafeng32@gmail.com</p>
+            </article>
+            <article>
+              <h3>Location</h3>
+              <p>18 Ember Lane, Colombo City</p>
+            </article>
+          </div>
+        </div>
+
+        <form class="contact__form reveal" id="contactForm" novalidate>
+          <label>
+            Name
+            <input type="text" id="contactName" name="contactName" placeholder="Your name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" id="contactEmail" name="contactEmail" placeholder="you@example.com" required>
+          </label>
+          <label>
+            Message
+            <textarea id="contactMessage" name="contactMessage" rows="5" placeholder="Tell us what you need" required></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Pink Slice. Modern comfort food with a bold midnight glow.</p>
+      <a href="#home">Back to start</a>
+    </footer>
+  </div>
+
+  <button class="sticky-cart" id="stickyCartBtn" type="button" aria-label="Open cart">
+    <span>Cart</span>
+    <strong id="stickyCartCount">0</strong>
+  </button>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__header">
+      <div>
+        <p class="eyebrow">Your order</p>
+        <h2>Cart</h2>
+      </div>
+      <button class="icon-btn" id="closeCartBtn" type="button" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div class="cart-drawer__items" id="cartItems">
+      <p class="empty-state">Your cart is empty. Add something delicious to get started.</p>
+    </div>
+
+    <div class="cart-drawer__footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">$0.00</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn--ghost btn--full" id="clearCartBtn" type="button">Clear Cart</button>
+        <a class="btn btn--primary btn--full" href="#checkout" id="checkoutLink">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

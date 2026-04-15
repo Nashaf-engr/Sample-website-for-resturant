@@ -996,3 +996,25 @@ textarea {
     bottom: 0.75rem;
   }
 }
+
+.toast {
+  position: fixed;
+  top: 90px; /* just below navbar */
+  left: 50%;
+  transform: translate(-50%, -20px);
+  background: #1b1b1b;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 2000;
+  border: 1px solid rgba(211, 2, 166, 0.584);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

@@ -291,10 +291,30 @@ function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
+// function updateCardQuantity(itemId, delta) {
+//   const selection = getCardSelection(itemId);
+//   selection.quantity = Math.max(1, selection.quantity + delta);
+//   // renderMenu();
+// }
+
 function updateCardQuantity(itemId, delta) {
   const selection = getCardSelection(itemId);
   selection.quantity = Math.max(1, selection.quantity + delta);
-  renderMenu();
+
+  const qtyElement = document.getElementById(`qty-${itemId}`);
+  if (qtyElement) {
+    qtyElement.textContent = selection.quantity;
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
 }
 
 function updateCardSize(itemId, size) {
@@ -326,7 +346,8 @@ function addToCart(itemId) {
 
   selection.quantity = 1;
   persistAndRefresh();
-  openCart();
+  // openCart();
+  showToast(`Added ${item.name} to your cart.`);
 }
 
 function updateCartQuantity(cartKey, delta) {
@@ -356,7 +377,7 @@ function clearCart() {
 // Every cart mutation flows through one refresh path for consistent UI state.
 function persistAndRefresh() {
   saveCart();
-  renderMenu();
+  // renderMenu();
   renderCart();
   renderCheckoutSummary();
 }
